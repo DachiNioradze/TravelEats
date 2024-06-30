@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div id="register" class="container-sm" style="background-color:white; height:130vh; width:30vw;">
+    <div class="row">
+        <div class="column mt-5">
+            <h1 class="mb-5" style=" font-size:30px;">Edit Comment</h1>
+        </div>
+    </div>
+
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ edit.hidden_tag()}}
+
+        <div class="row">
+            {{ edit.comment(class="form-control my-2", placeholder=edit.comment.label.text ) }}
+        </div>
+
+
+        <div class="row">
+            {{ edit.submit(class="btn btn-secondary p-2 my-2")}}
+        </div>
+
+
+
+
+
+
+
+    </form>
+
+</div>
+
+{% endblock %}

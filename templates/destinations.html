@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-sm" style=" height:130vh; background-color:rgba(255, 255, 255, 0.5); display:flex; justify-content:center;">
+    <div class="row text-center pt-5">
+        <div class="col">
+            <h1 style="font-size:40px;">Products sorted by cities</h1>
+            <p class="mt-5" style="font-size:18px;">Explore countless cities and find your favorite</p>
+            <div class=" row text-center" style="margin-top:3vw; padding-left:0; height:31vw; overflow-y:auto; ">
+                {% for city in cities %}
+                <div class="col align_center" style="margin-top:3vw;">
+                    <div class="card" style="width: 18rem;">
+                        {% if city.country in city_info %}
+                        <img src="/static/{{ city_info[city.country].image }}" class="card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                            <h6 class="card-title"><a href="/products_by_city/{{ city.country }}">{{ city.country }}</a></h6>
+                            <p class="card-text">{{ city.product_count }} product(s)</p>
+                            <p class="card-text">Population: {{ city_info[city.country].population }}</p>
+                            <p class="card-text">Landmark: {{ city_info[city.country].landmark }}</p>
+                            <p class="card-text">Fun fact: {{ city_info[city.country].fun_fact }}</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

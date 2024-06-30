@@ -1,0 +1,122 @@
+
+
+.shuashi{
+display:flex;
+justify-content:center;
+}
+
+
+#mwkrivi{
+margin-top:20vh;}
+
+#confirm{
+margin-top:3vh;
+}
+
+#register{
+padding:50px;
+}
+
+#index_body{
+background-image:url("img_6.png");
+  background-repeat: no-repeat;
+  background-size:100vw 140vh;
+
+}
+
+#box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 123vh;
+    background-color:rgba(22, 29, 66);
+    opacity: 0.3;
+    z-index: 0;
+    margin-top:55px;
+
+}
+
+.text-content{
+ position: relative;
+    z-index: 1; /* Ensure it's in front of the box */
+}
+
+.card-body{
+background-color:#F5F5F5
+}
+
+#left{
+display:flex;
+justify-content:left;
+}
+
+.about_product{
+display:flex;
+justify-content:left;
+}
+
+.card:hover{
+box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
+}
+
+.normal{
+font-weight:normal;
+font-size:17px;
+}
+
+.count{
+font-weight:normal;
+font-size:15px;
+margin-bottom:0;
+}
+
+#pink_circle{
+display:flex;
+flex-direction:column;
+justify-content:start;
+align-items:center;
+height:40vw;
+width:40vw;
+border-radius:100vw;
+background: linear-gradient(to bottom , #f5f1fb, #fcf1f8, white);
+margin-top:4vw;
+z-index:0;
+}
+
+.input{
+padding-left:1vw;
+width:20vw;
+padding-top:0.4vw;
+padding-bottom:0.4vw;
+border:1px solid black;
+border-radius:3px;
+margin-left:0.5vw;
+
+}
+
+.image{
+width:2.5vw;
+}
+
+.divs{
+display:flex;
+align-items:center;
+margin-bottom:0.5vw;
+}
+
+#submit_button{
+border:2px solid black;
+background-color:#dccdf1;
+margin-left:0.5vw;
+width:22.3vw;
+height:2.7vw;
+margin-top:3vw;
+
+}
+
+.align_center{
+display:flex;
+justify-content:center;
+}
+

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-sm" style=" height:150vh; background-color:rgba(255, 255, 255, 0.7)">
+    <div class="row text-center pt-5">
+        <div class="col">
+            <img src="/static/{{product['image_path']}}" style="width:500px; height:300px; border-radius:20px;" >
+            <div style="display:flex; flex-direction:row; margin-left:5vw; margin-top:2vw;">
+                <h4 class="count"> Posted at: {{ formatted_created_at }}</h4>
+                <h4 class="count" style="margin-left:5vw;">{{ comment_count }} Comment(s)</h4>
+                <h4 class="count" style="margin-left:2vw;">{{ rating_count }} Rating(s)</h4>
+
+
+            </div>
+
+            <div style="display:flex; flex-direction:row; margin-left:5vw; margin-top:2vw; align-items:center;">
+                <h4 class="count"  style="margin-right:3vw;">Likes: {{ like_count }}</h4>
+                <form action="/like/{{ product.id }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-success btn-sm">Like</button>
+                </form>
+                <h4 class="count" style="margin-left:10vw; margin-right:3vw;">Dislikes: {{ dislike_count }}</h4>
+                <form action="/dislike/{{ product.id }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Dislike</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="col">
+            <h4 class="mt-3" style=" font-size:30px; text-align:left;">{{product['name']}}</h4>
+            <h4 class="mt-5 about_product normal "  style="text-align:start; width:35vw;"> description: {{product['description']}}</h4>
+            <h4 class="mt-3 about_product normal"  > price: {{product['price']}}</h4>
+            <h4 class="mt-3 about_product normal"  > Address: {{product['address']}}</h4>
+            <h4 class=" mt-3 about_product normal" > Author: {{product['author']}}</h4>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <div style="display:flex; flex-direction:row; margin-left:4vw; width:74vw; justify-content:space-between;">
+                <form action="/product/{{ product.id }}" method="POST"
+                      style=" margin-top:10vw; display:flex; flex-direction:row; align-items:center;">
+                    {{ comment_form.hidden_tag() }}
+
+
+                    {{ comment_form.comment(class="form-control", style="width:30vw; height:3vw;
+                    border-top-right-radius:0;
+                    border-bottom-right-radius:0;", placeholder=comment_form.comment.label.text) }}
+
+                    {{ comment_form.submit(class="btn btn-secondary", style="width:8vw; height:3vw; font-size:13px;
+                    border-top-left-radius:0; border-bottom-left-radius:0;") }}
+
+
+                </form>
+
+
+                <form action="/product/{{ product.id }}" method="POST"
+                      style="display:flex; flex-direction:row; align-items:end">
+                    {{ form.hidden_tag() }}
+
+
+                    <h5 style="font-size:17px; margin-right:5vw;">Average Rating: {{
+                        avg_rating }}</h5>
+
+
+                        {{ form.rating(class="form-control", style="width:8vw; height:3vw;
+                        border-top-right-radius:0; border-bottom-right-radius:0;",
+                        placeholder=form.rating.label.text) }}
+
+                        {{ form.submit(class="btn btn-secondary", style="width:8vw; height:3vw; font-size:13px;
+                        border-top-left-radius:0; border-bottom-left-radius:0;") }}
+
+
+
+                </form>
+            </div>
+
+
+
+
+
+
+            <div class="row mt-5" style="width:75vw; margin-left:4vw;">
+                <div class="col" style="padding:0;">
+                    <h4>Comments:</h4>
+                    <div style="height:25vw; overflow-y:auto">
+                        {% for comment in comments %}
+                        <div class="card mt-2" style="display:flex; flex-direction:row;">
+                            <div class="card-body">
+                                <p class="card-text">{{ comment.comment }}</p>
+                                <p class="card-text"><small class="text-muted">By {{ comment.author }} on {{
+                                    comment.created_at }}</small></p>
+                            </div>
+
+                            {% if current_user.username == comment.author or current_user.role == "admin" %}
+                            <div class="card-body" style="display:flex; justify-content:right;">
+                                <a class="btn btn-info" href="/edit_comment/{{ comment['id'] }}" style="height:2.5vw; display:flex; align-items:center;">Edit</a>
+                                <a class="btn btn-danger" href="/delete_comment/{{ comment['id'] }}" style="height:2.5vw; display:flex; align-items:center; margin-left:1vw;">Delete</a>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

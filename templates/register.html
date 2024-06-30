@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div id="register" class="container-sm" style="background-color:white; height:130vh; width:30vw;">
+    <div class="row">
+        <div class="column mt-5">
+            <h1 class="mb-5" style=" font-size:30px;">Register</h1>
+        </div>
+    </div>
+
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {{ errors[0] }}
+    </div>
+
+    {% endfor %}
+
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag()}}
+
+        <div class="row">
+            {{ form.profile_image(class="form-control my-2") }}
+        </div>
+
+        <div class="row">
+            {{ form.username(class="form-control my-2", placeholder=form.username.label.text ) }}
+        </div>
+
+        <div class="row">
+            {{ form.email(class="form-control my-2", placeholder=form.email.label.text) }}
+        </div>
+
+        <div class="row">
+            {{ form.password(class="form-control my-2", placeholder=form.password.label.text) }}
+        </div>
+
+        <div class="form-text" id="basic-addon4" style="color:maroon">Must include capital letter, numbers and symbols.</div>
+
+        <div class="row">
+            {{ form.repeat_password(class="form-control my-2", placeholder=form.repeat_password.label.text) }}
+
+        </div>
+
+        <div class="row" style="align-items:center;">
+            <div class="col">
+                {{form.birthday.label}}:
+            </div>
+
+            <div class="col">
+                {{ form.birthday(class="form-control my-2") }}
+            </div>
+
+        </div>
+
+        <div class="row form-check">
+            {{ form.gender(class="my-2") }}
+        </div>
+
+        <div class="row">
+            {{ form.country(class="form-select my-2", placeholder=form.country.label.text) }}
+        </div>
+
+        <div class="row">
+            {{ form.register(class="btn btn-primary p-2 my-2")}}
+        </div>
+
+
+
+
+
+
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container-sm" style=" height:140vh; background-color:rgba(255, 255, 255, 0.5)">
+
+    <div class="row text-center pt-5">
+        <div class="col" style="display:flex; flex-direction:column; align-items:center;">
+            <h1>Products in {{ city }}</h1>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="row text-center pt-5" style="height:40vw; overflow-y:auto; margin-top:3vw;">
+        {% for product in products %}
+        <div class="col align_center" style="margin-bottom:3vw;" >
+            <div class="card" style="width: 18rem;">
+                <img src="/static/{{product['image_path']}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div style="display:flex; flex-direction:row; align-items:center;">
+                            <img src="/static/country.png"
+                                 style="height:1vw; width:1vw; margin-right:0.5vw">
+                            <p style="margin-bottom:0;">{{ product.country}}</p>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div style="display:flex; flex-direction:row; align-items:center;">
+                            <img src="/static/location.png"
+                                 style="height:1.5vw; width:1.5vw; margin-right:0.5vw">
+                            <p style="margin-bottom:0;">{{ product.address }}</p>
+                        </div>
+                    </li>
+                    <li id="left" class="list-group-item">Price: {{ product.price }}</li>
+                </ul>
+                <div class="card-body" style="display:flex; flex-direction:row; justify-content:space-between">
+                    <p class="card-text"><small class="text-body-secondary">By {{ product.author }}</small></p>
+                    <a href="/product/{{product['id']}}" class="card-link">See more</a>
+
+                </div>
+
+                {% if current_user.role == "admin" or current_user.username == product.author %}
+                <div class="card-body" style="display:flex; flex-direction:row; justify-content:space-between">
+                    <a class="btn btn-info" href="/edit_food/{{product['id']}}" style="display:flex; align-items:center; justify-content:center;">Edit</a>
+                    <a class="btn btn-danger" href="/delete_food/{{ product['id'] }}" style="display:flex; align-items:center; justify-content:center;">Delete</a>
+
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock %}

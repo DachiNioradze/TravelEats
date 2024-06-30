@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-sm" style=" height:130vh; background-color:rgba(255, 255, 255, 0.5); display:flex; justify-content:center;">
+    <div class="row text-center pt-5">
+        <div class="col">
+            <h3 style="font-size:18px; margin-bottom:1vw;">TravelEats</h3>
+            <h1 style="font-size:47px;">We've been waiting <br> for you</h1>
+            <p class="mt-5" style="font-size:18px;">We want to hear from you. Let us know how we can help.</p>
+
+            <div id="pink_circle">
+                <h3 style="margin-top:5vw; margin-bottom:4vw;">Send us a Message</h3>
+                <div class="divs">
+                    <img src="/static/person.png" class="image">
+                    <input type="text" placeholder="Enter your name" class="input">
+                </div>
+                <div class="divs">
+                    <img src="/static/envelope.png" class="image" id="envelope">
+                    <input type="text" placeholder="Enter your email" class="input">
+                </div>
+                <div class="divs">
+                    <img src="/static/location_white.png" class="image">
+                    <input type="text" placeholder="Enter your region" class="input">
+                </div>
+                <div class="divs">
+                    <img src="/static/phone.png" class="image">
+                    <input type="text" placeholder="Phone number" class="input">
+                </div>
+
+                <button id="submit_button">
+                    Submit
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

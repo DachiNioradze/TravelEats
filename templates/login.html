@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div id="register" class="container-sm" style="background-color:white; height:80vh; width:30vw;">
+    <div class="row">
+        <div class="column mt-5">
+            <h1 class="mb-5" style=" font-size:30px;">Log in</h1>
+        </div>
+    </div>
+
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {{ errors[0] }}
+    </div>
+
+    {% endfor %}
+
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag()}}
+
+        <div class="row">
+            {{ form.username(class="form-control my-2", placeholder=form.username.label.text ) }}
+        </div>
+
+
+        <div class="row">
+            {{ form.password(class="form-control my-2", placeholder=form.password.label.text) }}
+        </div>
+
+
+        <div class="row">
+            {{ form.login(class="btn btn-primary p-2 my-2")}}
+        </div>
+
+
+
+
+
+
+
+    </form>
+
+</div>
+
+{% endblock %}

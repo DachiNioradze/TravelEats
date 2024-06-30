@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container-sm" style=" height:110vh; background-color:rgba(255, 255, 255, 0.5)">
+    <div class="row text-center pt-5">
+        <h1>Users Page</h1>
+    </div>
+
+
+    <div class="row text-center pt-5" style="height:32vw; overflow-y:auto; margin-top:5vw;">
+        {% for user in registered_users %}
+        <div class="col align_center" style="margin-bottom:3vw">
+            <div class="card" style="width: 18rem;">
+                <img src="/static/{{ user['path'] }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.username}}</h5>
+                    <p class="card-text">{{user.email}}</p>
+                    <p class="card-text">{{ user.birthday }}</p>
+                    {% if current_user.role == "admin" or current_user.username == user.username %}
+                    <a class="btn btn-danger" href="/delete_user/{{ user.id }}">Delete</a>
+                    <a class="btn btn-info" href="/edit_user/{{user.id}}">Edit</a>
+                    {% endif %}
+
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock %}

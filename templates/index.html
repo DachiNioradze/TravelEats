@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<body id="index_body">
+</body>
+
+<div id="box">
+</div>
+
+<div class="container-sm" style=" height:110vh">
+    <div class="row text-center pt-5">
+        <div class="col">
+            <h1 class="text-content" style="font-weight:700; font-size:60px; color:#f3e9d2">Welcome To TravelEats</h1>
+            <h4 class=" text-content mt-5" style="font-weight:700; font-size:20px; color:#f5f5f5">This website helps you
+                locate the most delicious food in the area you pick. <br> You can also add your own experience and plan
+                your
+                trips!</h4>
+        </div>
+    </div>
+
+    <div class="row" id="mwkrivi" style="height:50vh;">
+        <div class="col shuashi">
+            <div id='pirveli' class="card text-center" style="width:19.5vw;">
+                <img src="/static/pizza.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Best Food suggestions</h5>
+                    <p class="card-text">Explore the culinary gems of any destination! Search a location and see the
+                        best
+                        foods you can buy.</p>
+                    <a href="/explore" class="btn btn-primary" style="width:9.75vw;">Explore</a>
+                </div>
+            </div>
+        </div>
+        <div class="col shuashi">
+            <div class="card text-center" style="width:19.5vw;">
+                <img src="/static/img_1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Sort with ease</h5>
+                    <p class="card-text">Need help sorting products? View products according to cities and learn a fun fact</p>
+                    <a href="/destinations" class="btn btn-primary" style="width:9.75vw;">See</a>
+                </div>
+            </div>
+        </div>
+        <div class="col shuashi">
+            <div class="card text-center" style="width:19.5vw;">
+                <img src="/static/img_3.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Add your own</h5>
+                    <p class="card-text">Add your very own suggestion and/or experience for others to explore.</p>
+                    <a href="/add" class="btn btn-primary" style="width:9.75vw;">Add Suggestion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div id="register" class="container-sm" style="background-color:white; height:130vh; width:30vw;">
+    <div class="row">
+        <div class="column mt-5">
+            <h1 class="mb-5" style=" font-size:30px;">Add Your Own Suggestion</h1>
+        </div>
+    </div>
+
+    {% for errors in add.errors.values() %}
+    <div class="alert alert-danger">
+        {{ errors[0] }}
+    </div>
+
+    {% endfor %}
+
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ add.hidden_tag()}}
+
+        <div class="row">
+            {{ add.image(class="form-control my-2") }}
+        </div>
+
+        <div class="row">
+            {{ add.name(class="form-control my-2", placeholder=add.name.label.text ) }}
+        </div>
+
+        <div class="row">
+            {{ add.description(class="form-control my-2", placeholder=add.description.label.text) }}
+        </div>
+
+
+        <div class="row">
+            {{ add.country(class="form-select my-2", placeholder=add.country.label.text) }}
+        </div>
+
+        <div class="row">
+            {{ add.address(class="form-control my-2", placeholder=add.address.label.text) }}
+        </div>
+
+        <div class="row">
+            {{ add.price(class="form-control my-2", placeholder=add.price.label.text) }}
+        </div>
+
+
+        <div class="row">
+            {{ add.register(class="btn btn-secondary p-2 my-2")}}
+        </div>
+
+
+
+
+
+
+
+    </form>
+
+</div>
+
+{% endblock %}
